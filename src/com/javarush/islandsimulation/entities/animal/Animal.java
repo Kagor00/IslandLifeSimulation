@@ -63,6 +63,8 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
             }
         }
 
+        /* якщо вага спійманої тварини більша за насиченість, додаємо насиченість,
+        якщо менша - додаємо вагу спійманої тварини */
         if (weightFood >= this.saturation) {
             setWeight(getWeight() + this.saturation);
         } else {
