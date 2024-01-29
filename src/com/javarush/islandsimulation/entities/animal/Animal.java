@@ -56,7 +56,7 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
         for (Organism organism : organisms) {
             probability = probabilityMatrix.getProbability(this.getClass(), organism.getClass());
             random = ThreadLocalRandom.current().nextDouble();
-            if (random <= probability) {
+            if (random <= probability && probability > 0) {
                 weightFood = organism.getWeight();
                 island.removeOrganismFromCell(position[0], position[1], organism);
                 break;
