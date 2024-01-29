@@ -1,6 +1,5 @@
 package com.javarush.islandsimulation.entities;
 
-import com.javarush.islandsimulation.entities.animal.Animal;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

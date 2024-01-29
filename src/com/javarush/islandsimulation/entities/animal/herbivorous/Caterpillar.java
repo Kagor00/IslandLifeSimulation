@@ -10,7 +10,7 @@ public class Caterpillar extends Herbivorous {
     private static final AtomicInteger idCounter = new AtomicInteger(0);
 
     public Caterpillar(Gender gender) {
-        super(idCounter.getAndIncrement(), 0.01, 1000, 1, 0.005, gender);
+        super(idCounter.getAndIncrement(), 0.01, 1000, 1, 0.002, gender);
     }
 
     /* Статичний метод для заповнення популяції,

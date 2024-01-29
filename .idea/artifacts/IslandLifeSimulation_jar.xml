@@ -3,7 +3,6 @@
     <output-path>$USER_HOME$/Desktop</output-path>
     <root id="archive" name="IslandLifeSimulation.jar">
       <element id="module-output" name="IslandLifeSimulation" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/24.0.0/annotations-24.0.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Documents/Програми/jar-s/jackson/jackson-annotations-2.13.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Documents/Програми/jar-s/jackson/jackson-core-2.13.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Documents/Програми/jar-s/jackson/jackson-databind-2.13.2.2.jar" path-in-jar="/" />
@@ -12,6 +11,7 @@
       <element id="extracted-dir" path="$USER_HOME$/Documents/Програми/jar-s/jackson/snakeyaml-1.30.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Documents/Програми/jar-s/jackson/stax2-api-4.2.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Documents/Програми/jar-s/jackson/woodstox-core-6.2.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/24.0.0/annotations-24.0.0.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

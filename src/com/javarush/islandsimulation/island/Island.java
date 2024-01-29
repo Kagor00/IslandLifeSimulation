@@ -61,8 +61,8 @@ public class Island {
     public int[] getPositionOfOrganism(Organism organism) {
         for (int row = 0; row < cells.size(); row++) {
             for (int column = 0; column < cells.get(row).size(); column++) {
-                List<Organism> allOrganismsFromCell = new ArrayList<>(getAllOrganismsFromCell(row, column));
-                if (allOrganismsFromCell.contains(organism)) {
+                List<Organism> organisms = new ArrayList<>(getAllOrganismsFromCell(row, column));
+                if (organisms.contains(organism)) {
                     return new int[]{row, column};
                 }
             }
