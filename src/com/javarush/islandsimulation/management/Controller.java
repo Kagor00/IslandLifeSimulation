@@ -1,10 +1,6 @@
 package com.javarush.islandsimulation.management;
 
-import com.javarush.islandsimulation.entities.animal.Animal;
 import com.javarush.islandsimulation.island.Island;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Controller {
     private static final PopulationService POPULATION_SERVICE = new PopulationService();
