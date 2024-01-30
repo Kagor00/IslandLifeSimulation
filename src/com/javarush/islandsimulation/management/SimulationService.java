@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
 
 public class SimulationService {
 
-    // 10% імовірність виростання рандомної рослини в кожній клітинці
-    private static final double PLANTS_GROWTH_PROPABILITY = 0.25;
+    // 20% імовірність виростання рандомної рослини в кожній клітинці
+    private static final double PLANTS_GROWTH_PROPABILITY = 0.20;
 
 
     void animalLifeSimulation(Island island) {
