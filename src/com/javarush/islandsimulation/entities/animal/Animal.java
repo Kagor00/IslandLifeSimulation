@@ -31,7 +31,7 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
 
 
     @Override
-    public void move(Island island) {
+    public synchronized void move(Island island) {
         int[] position = island.getPositionOfOrganism(this);
 
         int attempt = 0;
