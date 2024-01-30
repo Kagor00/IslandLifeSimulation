@@ -11,91 +11,91 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class PopulationService {
-    public void wolvesCreator(int count, Island island) {
+    void wolvesCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Wolf.createRandomWolf());
         }
     }
 
-    public void boasCreator(int count, Island island) {
+    void boasCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Boa.createRandomBoa());
         }
     }
 
-    public void foxesCreator(int count, Island island) {
+    void foxesCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Fox.createRandomFox());
         }
     }
 
-    public void bearsCreator(int count, Island island) {
+    void bearsCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Bear.createRandomBear());
         }
     }
 
-    public void eaglesCreator(int count, Island island) {
+    void eaglesCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Eagle.createRandomEagle());
         }
     }
 
-    public void horsesCreator(int count, Island island) {
+    void horsesCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Horse.createRandomHorse());
         }
     }
 
-    public void deerCreator(int count, Island island) {
+    void deerCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Deer.createRandomDeer());
         }
     }
 
-    public void rabbitsCreator(int count, Island island) {
+    void rabbitsCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Rabbit.createRandomRabbit());
         }
     }
 
-    public void mousesCreator(int count, Island island) {
+    void mousesCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Mouse.createRandomMouse());
         }
     }
 
-    public void goatsCreator(int count, Island island) {
+    void goatsCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Goat.createRandomGoat());
         }
     }
 
-    public void sheepCreator(int count, Island island) {
+    void sheepCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Sheep.createRandomSheep());
         }
     }
 
-    public void boarsCreator(int count, Island island) {
+    void boarsCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Boar.createRandomBoar());
         }
     }
 
-    public void buffaloesCreator(int count, Island island) {
+    void buffaloesCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Buffalo.createRandomBuffalo());
         }
     }
 
-    public void ducksCreator(int count, Island island) {
+    void ducksCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Duck.ceateRandomDuck());
         }
     }
 
-    public void caterpillarsCreator(int count, Island island) {
+    void caterpillarsCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Caterpillar.createRandomCaterpillar());
         }
@@ -125,7 +125,7 @@ public class PopulationService {
         }
     }
 
-    public synchronized void getCountAnimalsOnIsland(Island island) {
+    void getCountAnimalsOnIsland(Island island) {
         int wolvesCount = 0;
         int boasCount = 0;
         int bearsCount = 0;
@@ -193,12 +193,5 @@ public class PopulationService {
         System.out.println("Кiлькiсть буйволiв: " + buffaloesCount);
         System.out.println("Кiлькiсть качок: " + ducksCount);
         System.out.println("Кiлькiсть гусенi: " + caterpillarsCount);
-
     }
-
-//    public void getCountPlantsOnIsland(Island island) {
-//        List<Plant> plants = island.getAllPlantsFromIsland();
-//        int plantsCount = plants.size();
-//        System.out.println("Кількість рослин: " + plantsCount);
-//    }
 }

@@ -15,10 +15,10 @@ import java.util.concurrent.TimeUnit;
 public class SimulationService {
 
     // 10% імовірність виростання рандомної рослини в кожній клітинці
-    public static final double PLANTS_GROWTH_PROPABILITY = 0.10;
+    private static final double PLANTS_GROWTH_PROPABILITY = 0.20;
 
 
-    public void animalLifeSimulation(Island island) {
+    void animalLifeSimulation(Island island) {
         ExecutorService executorService = Executors.newCachedThreadPool();
         int rows = island.getRows();
         int columns = island.getColumns();
@@ -49,7 +49,7 @@ public class SimulationService {
     }
 
 
-    public void plantGrowth(Island island) {
+    void plantGrowth(Island island) {
         int rows = island.getRows();
         int columns = island.getColumns();
 
