@@ -36,7 +36,7 @@ public class Controller {
         POPULATION_SERVICE.boarsCreator(CLI.promptForInt("Кiлькiсть кабанiв: "), island);
         POPULATION_SERVICE.buffaloesCreator(CLI.promptForInt("Кiлькiсть буйволiв: "), island);
         POPULATION_SERVICE.ducksCreator(CLI.promptForInt("Кiлькiсть качок: "), island);
-        POPULATION_SERVICE.squirrelsCreator(CLI.promptForInt("Кiлькiсть білок: "), island);
+        POPULATION_SERVICE.squirrelsCreator(CLI.promptForInt("Кiлькiсть бiлок: "), island);
     }
 
     private static void processSimulationOption(int promptOptional, Island island) {

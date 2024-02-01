@@ -191,6 +191,6 @@ public class PopulationService {
         System.out.println("Кiлькiсть кабанiв: " + boarsCount);
         System.out.println("Кiлькiсть буйволiв: " + buffaloesCount);
         System.out.println("Кiлькiсть качок: " + ducksCount);
-        System.out.println("Кiлькiсть білок: " + squirrelsCount);
+        System.out.println("Кiлькiсть бiлок: " + squirrelsCount);
     }
 }

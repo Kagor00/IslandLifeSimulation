@@ -62,11 +62,11 @@ public class CLI {
     }
 
     private static void printErrorMessage() {
-        System.out.println("Помилка. Введіть ціле число від " + MIN_VALUE + " до " + MAX_VALUE + ".");
+        System.out.println("Помилка. Введiть цiле число вiд " + MIN_VALUE + " до " + MAX_VALUE + ".");
     }
 
     private static void printErrorOptionMessage() {
-        System.out.println("Помилка. Введіть " + optionFirst + " або " + optionSecond);
+        System.out.println("Помилка. Введiть " + optionFirst + " або " + optionSecond);
     }
 
 }
