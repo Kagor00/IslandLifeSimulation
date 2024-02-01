@@ -7,10 +7,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @EqualsAndHashCode(callSuper = true)
 public class Rabbit extends Herbivorous {
-    private static final AtomicInteger idCounter = new AtomicInteger(0);
+    private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
     public Rabbit(Gender gender) {
-        super(idCounter.getAndIncrement(), 2.0, 150, 2, 0.45, gender);
+        super(ID_COUNTER.getAndIncrement(), 2.0, 150, 2, 0.45, gender);
 
     }
 

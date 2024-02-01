@@ -7,10 +7,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @EqualsAndHashCode(callSuper = true)
 public class Buffalo extends Herbivorous {
-    private static final AtomicInteger idCounter = new AtomicInteger(0);
+    private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
     public Buffalo(Gender gender) {
-        super(idCounter.getAndIncrement(), 700.0, 10, 3, 100.0, gender);
+        super(ID_COUNTER.getAndIncrement(), 700.0, 10, 3, 100.0, gender);
     }
 
     /* Статичний метод для заповнення популяції,

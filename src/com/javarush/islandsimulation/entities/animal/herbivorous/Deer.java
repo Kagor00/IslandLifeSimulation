@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Deer extends Herbivorous {
     private static final AtomicInteger idCounter = new AtomicInteger(0);
 
+
     public Deer(Gender gender) {
         super(idCounter.getAndIncrement(), 300.0, 20, 4, 50.0, gender);
     }

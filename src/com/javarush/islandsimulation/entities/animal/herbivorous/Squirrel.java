@@ -6,25 +6,25 @@ import lombok.EqualsAndHashCode;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @EqualsAndHashCode(callSuper = true)
-public class Caterpillar extends Herbivorous {
-    private static final AtomicInteger idCounter = new AtomicInteger(0);
+public class Squirrel extends Herbivorous {
+    private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
-    public Caterpillar(Gender gender) {
-        super(idCounter.getAndIncrement(), 0.01, 1000, 1, 0.002, gender);
+    public Squirrel(Gender gender) {
+        super(ID_COUNTER.getAndIncrement(), 2, 100, 3, 0.50, gender);
     }
 
     /* Статичний метод для заповнення популяції,
      використовується для швидкого заповнення популяції виду на острові при ініціалізації */
-    public static Caterpillar createRandomCaterpillar() {
+    public static Squirrel createRandomSquirrel() {
         Gender randomGender = Gender.getRandomGender();
-        return new Caterpillar(randomGender);
+        return new Squirrel(randomGender);
     }
 
     /* Створення організмів,
     використовується в тих методах, які приймають організми певного виду
     і повертають нові організми того ж виду */
     @Override
-    public Caterpillar createNewOrganism() {
-        return createRandomCaterpillar();
+    public Squirrel createNewOrganism() {
+        return createRandomSquirrel();
     }
 }

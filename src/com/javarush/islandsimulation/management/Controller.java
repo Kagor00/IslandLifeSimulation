@@ -9,7 +9,9 @@ public class Controller {
     static void startProgram() {
         Island island = initializeIsland();
         populateIslandWithAnimals(island);
-        runLimitedSimulation(island);
+
+        int promptOptional = CLI.promptForOption();
+        processSimulationOption(promptOptional, island);
     }
 
     private static Island initializeIsland() {
@@ -34,19 +36,50 @@ public class Controller {
         POPULATION_SERVICE.boarsCreator(CLI.promptForInt("Кiлькiсть кабанiв: "), island);
         POPULATION_SERVICE.buffaloesCreator(CLI.promptForInt("Кiлькiсть буйволiв: "), island);
         POPULATION_SERVICE.ducksCreator(CLI.promptForInt("Кiлькiсть качок: "), island);
-        POPULATION_SERVICE.caterpillarsCreator(CLI.promptForInt("Кiлькiсть гусенi: "), island);
+        POPULATION_SERVICE.squirrelsCreator(CLI.promptForInt("Кiлькiсть білок: "), island);
     }
+
+    private static void processSimulationOption(int promptOptional, Island island) {
+        if (promptOptional == 1) {
+            runContinuousSimulation(island);
+        } else if (promptOptional == 2) {
+            runLimitedSimulation(island);
+        }
+    }
+
+    private static void runContinuousSimulation(Island island) {
+        System.out.println("____________________________________________________________________________________________________________________");
+        System.out.println("Зачекайте поки завершиться симуляцiя. Це може зайняти деякий час...");
+        System.out.println("____________________________________________________________________________________________________________________");
+        int daysCount = 0;
+
+        while (island.isAnimalPopulationValid(island)) {
+            Controller.SIMULATION_SERVICE.animalLifeSimulation(island);
+            Controller.SIMULATION_SERVICE.plantGrowth(island);
+            daysCount++;
+        }
+        System.out.println("____________________________________________________________________________________________________________________");
+        System.out.println("Симуляцiю завершено. Кiлькiсть днiв життя популяцiї: " + daysCount);
+        System.out.println("____________________________________________________________________________________________________________________");
+    }
+
 
     private static void runLimitedSimulation(Island island) {
         int daysCount = CLI.promptForInt("Введiть кiлькiсть днiв симуляцiї життя на островi: ");
-        System.out.println("Зачекайте поки завершиться симуляцiя...");
+        System.out.println("Зачекайте поки завершиться симуляцiя. Це може зайняти деякий час...");
         for (int i = 0; i < daysCount; i++) {
             Controller.SIMULATION_SERVICE.plantGrowth(island);
             Controller.SIMULATION_SERVICE.animalLifeSimulation(island);
+
         }
+        System.out.println("____________________________________________________________________________________________________________________");
         System.out.println("Симуляцiю завершено. ");
-        System.out.println("Статистика популяцiї тварин на островi по завершенню симуляцiї: ");
+        System.out.println("____________________________________________________________________________________________________________________");
+        System.out.println();
+        System.out.println("Статистика популяцiї тварин на островi, " + "день " + daysCount + ":");
+        System.out.println();
         Controller.POPULATION_SERVICE.getCountAnimalsOnIsland(island);
+        System.out.println("____________________________________________________________________________________________________________________");
     }
 }
 

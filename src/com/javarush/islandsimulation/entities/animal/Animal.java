@@ -10,7 +10,6 @@ import com.javarush.islandsimulation.probability.ProbabilityMatrix;
 import lombok.Getter;
 
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
@@ -20,6 +19,8 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
     private final Gender gender;
     private final double saturation;
     private final ProbabilityMatrix probabilityMatrix = new ProbabilityMatrix();
+    //перевірка тварини, яка розмножилась, щоб одна тварина розмножувалась за один хід лише один раз
+    private boolean hasReproduced = false;
 
 
     public Animal(int id, double weight, int maxCount, int maxSpeed, double saturation, Gender gender) {
@@ -31,7 +32,7 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
 
 
     @Override
-    public synchronized void move(Island island) {
+    public void move(Island island) {
         int[] position = island.getPositionOfOrganism(this);
 
         int attempt = 0;
@@ -47,7 +48,7 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
         }
     }
 
-    public synchronized void findFood(Island island) {
+    public void findFood(Island island) {
         List<Organism> organisms = island.getAllOrganismsOnThisCell(this);
         int[] position = island.getPositionOfOrganism(this);
         double weightFood = 0;
@@ -74,26 +75,33 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
 
 
     @Override
-    public synchronized void reproduce(Island island) {
-        int[] position = island.getPositionOfOrganism(this);
-        int row = position[0];
-        int column = position[1];
-        Animal fitsrAnimal = this;
-        Animal newAnimal;
-        List<Organism> organisms = island.getAllOrganismsFromCell(row, column);
-        for (Organism organism : organisms) {
-            if (organism instanceof Animal
-                    && isValidReproduce(fitsrAnimal, (Animal) organism)
-                    && isValidPlacing(island, position)) {
-                newAnimal = (Animal) this.createNewOrganism();
-                island.addOrganismToCell(row, column, newAnimal);
-                break;
+    public void reproduce(Island island) {
+        if (!hasReproduced) {
+            int[] position = island.getPositionOfOrganism(this);
+            int row = position[0];
+            int column = position[1];
+            Animal firstAnimal = this;
+            Animal newAnimal = null;
+
+            List<Animal> animals = island.getAllAnimalsFromCell(row, column);
+            for (Animal animal : animals) {
+                if (isValidReproduce(firstAnimal, animal)
+                        && isValidPlacing(island, position)) {
+                    newAnimal = (Animal) this.createNewOrganism();
+                    island.addOrganismToCell(row, column, newAnimal);
+                    break;
+                }
+            }
+            /* вказуємо, що дана тварина вже розмножилась,
+            щоб одна тварина за один хід не розмножувалась кілька разів */
+            if (newAnimal != null) {
+                hasReproduced = true;
             }
         }
     }
 
     @Override
-    public synchronized void deplete(Island island) {
+    public void deplete(Island island) {
         /* від ваги віднімається насиченість, таким чином тварина постійно повинна їсти,
         якщо вага дійде до нуля, тварина помре */
         this.setWeight(this.getWeight() - this.getSaturation());
@@ -107,12 +115,11 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
 
     private int[] calculateNewPosition(int[] currentPosition) {
         int maxSpeed = this.getMaxSpeed();
-        Random random = new Random();
 
         int direction = ThreadLocalRandom.current().nextInt(DIRECTIONS_COUNT); //обираємо один з восьми напрямків руху
         int row = currentPosition[0];
         int column = currentPosition[1];
-        int steps = random.nextInt(maxSpeed) + 1;
+        int steps = ThreadLocalRandom.current().nextInt(maxSpeed) + 1;
         //Напрямки (по прямій і по діагоналі)
         switch (direction) {
             //вгору
@@ -154,7 +161,7 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
         int column = newPosition[1];
         int maxCount = this.getMaxCount();
         return island.isValidCell(row, column)
-                && island.getCountOfOrganismType(row, column, this) < maxCount;
+                && island.getCountOfOrganismTypeOnCell(row, column, this) < maxCount;
     }
 
 
@@ -162,9 +169,7 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
     private boolean isValidReproduce(Animal firstAnimal, Animal secondAnimal) {
         return firstAnimal.getClass().equals(secondAnimal.getClass())
                 && ((firstAnimal.gender.equals(Gender.MALE)
-                && secondAnimal.gender.equals(Gender.FEMALE))
-                || (firstAnimal.gender.equals(Gender.FEMALE)
-                && secondAnimal.gender.equals(Gender.MALE)));
+                && secondAnimal.gender.equals(Gender.FEMALE)));
     }
 
     private void performMove(Island island, int[] currentPosition, int[] newPosition) {

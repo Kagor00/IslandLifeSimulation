@@ -56,7 +56,7 @@ public class ProbabilityMatrix {
         setProbability(Fox.class, Rabbit.class, 0.70);
         setProbability(Fox.class, Mouse.class, 0.90);
         setProbability(Fox.class, Duck.class, 0.60);
-        setProbability(Fox.class, Caterpillar.class, 0.40);
+        setProbability(Fox.class, Squirrel.class, 0.40);
 
         setProbability(Bear.class, Boa.class, 0.80);
         setProbability(Bear.class, Horse.class, 0.40);
@@ -78,16 +78,14 @@ public class ProbabilityMatrix {
         setProbability(Deer.class, Plant.class, 1.00);
         setProbability(Rabbit.class, Plant.class, 1.00);
         setProbability(Mouse.class, Plant.class, 1.00);
-        setProbability(Mouse.class, Caterpillar.class, 0.90);
         setProbability(Goat.class, Plant.class, 1.00);
         setProbability(Sheep.class, Plant.class, 1.00);
         setProbability(Boar.class, Plant.class, 1.00);
         setProbability(Boar.class, Mouse.class, 0.50);
-        setProbability(Boar.class, Caterpillar.class, 0.90);
         setProbability(Buffalo.class, Plant.class, 1.00);
         setProbability(Duck.class, Plant.class, 1.00);
-        setProbability(Duck.class, Caterpillar.class, 0.90);
-        setProbability(Caterpillar.class, Plant.class, 1.00);
+        setProbability(Squirrel.class, Plant.class, 0.50);
+        setProbability(Squirrel.class, Mouse.class, 0.80);
     }
 }
 

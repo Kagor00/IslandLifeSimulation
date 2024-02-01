@@ -7,10 +7,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @EqualsAndHashCode(callSuper = true)
 public class Fox extends Predator {
-    private static final AtomicInteger idCounter = new AtomicInteger(0);
+    private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
     public Fox(Gender gender) {
-        super(idCounter.getAndIncrement(), 8.0, 30, 2, 2.0, gender);
+        super(ID_COUNTER.getAndIncrement(), 8.0, 30, 2, 2.0, gender);
 
     }
 

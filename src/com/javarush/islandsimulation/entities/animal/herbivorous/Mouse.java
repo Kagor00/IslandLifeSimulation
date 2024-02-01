@@ -7,10 +7,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @EqualsAndHashCode(callSuper = true)
 public class Mouse extends Herbivorous {
-    private static final AtomicInteger idCounter = new AtomicInteger(0);
+    private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
     public Mouse(Gender gender) {
-        super(idCounter.getAndIncrement(), 0.05, 500, 1, 0.01, gender);
+        super(ID_COUNTER.getAndIncrement(), 0.05, 500, 1, 0.01, gender);
     }
 
     /* Статичний метод для заповнення популяції,

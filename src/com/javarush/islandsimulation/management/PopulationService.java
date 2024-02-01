@@ -6,11 +6,11 @@ import com.javarush.islandsimulation.entities.animal.herbivorous.*;
 import com.javarush.islandsimulation.entities.animal.predators.*;
 import com.javarush.islandsimulation.island.Island;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class PopulationService {
+
     void wolvesCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
             placeOrganismOnRandomCell(island, Wolf.createRandomWolf());
@@ -95,9 +95,9 @@ public class PopulationService {
         }
     }
 
-    void caterpillarsCreator(int count, Island island) {
+    void squirrelsCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {
-            placeOrganismOnRandomCell(island, Caterpillar.createRandomCaterpillar());
+            placeOrganismOnRandomCell(island, Squirrel.createRandomSquirrel());
         }
     }
 
@@ -115,7 +115,7 @@ public class PopulationService {
         while (attempts < maxAttempts) {
             row = ThreadLocalRandom.current().nextInt(rows);
             column = ThreadLocalRandom.current().nextInt(columns);
-            countOfOrganismType = island.getCountOfOrganismType(row, column, organism);
+            countOfOrganismType = island.getCountOfOrganismTypeOnCell(row, column, organism);
 
             if (countOfOrganismType < maxCount) {
                 island.addOrganismToCell(row, column, organism);
@@ -140,19 +140,18 @@ public class PopulationService {
         int boarsCount = 0;
         int buffaloesCount = 0;
         int ducksCount = 0;
-        int caterpillarsCount = 0;
-
-        List<Animal> allAnimals = new ArrayList<>(island.getAllAnimalsFromIsland());
+        int squirrelsCount = 0;
+        List<Animal> allAnimals = island.getAllAnimalsFromIsland();
 
         for (Organism organism : allAnimals) {
             if (organism instanceof Wolf) {
                 wolvesCount++;
             } else if (organism instanceof Boa) {
                 boasCount++;
-            } else if (organism instanceof Fox) {
-                foxesCount++;
             } else if (organism instanceof Bear) {
                 bearsCount++;
+            } else if (organism instanceof Fox) {
+                foxesCount++;
             } else if (organism instanceof Eagle) {
                 eaglesCount++;
             } else if (organism instanceof Horse) {
@@ -173,8 +172,8 @@ public class PopulationService {
                 buffaloesCount++;
             } else if (organism instanceof Duck) {
                 ducksCount++;
-            } else if (organism instanceof Caterpillar) {
-                caterpillarsCount++;
+            } else if (organism instanceof Squirrel) {
+                squirrelsCount++;
             }
         }
 
@@ -192,6 +191,6 @@ public class PopulationService {
         System.out.println("Кiлькiсть кабанiв: " + boarsCount);
         System.out.println("Кiлькiсть буйволiв: " + buffaloesCount);
         System.out.println("Кiлькiсть качок: " + ducksCount);
-        System.out.println("Кiлькiсть гусенi: " + caterpillarsCount);
+        System.out.println("Кiлькiсть білок: " + squirrelsCount);
     }
 }

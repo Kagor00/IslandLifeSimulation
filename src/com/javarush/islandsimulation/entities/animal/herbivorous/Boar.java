@@ -7,10 +7,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @EqualsAndHashCode(callSuper = true)
 public class Boar extends Herbivorous {
-    private static final AtomicInteger idCounter = new AtomicInteger(0);
+    private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
     public Boar(Gender gender) {
-        super(idCounter.getAndIncrement(), 400.0, 50, 2, 50.0, gender);
+        super(ID_COUNTER.getAndIncrement(), 400.0, 50, 2, 50.0, gender);
     }
 
     /* Статичний метод для заповнення популяції,

@@ -4,6 +4,7 @@ import com.javarush.islandsimulation.entities.animal.Animal;
 import com.javarush.islandsimulation.entities.plants.Plant;
 import com.javarush.islandsimulation.entities.plants.pantsservice.PlantsCreator;
 import com.javarush.islandsimulation.island.Island;
+import lombok.Getter;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -32,8 +33,8 @@ public class SimulationService {
                     for (Animal animal : animalsInCell) {
                         animal.move(island);
                         animal.findFood(island);
-                        animal.reproduce(island);
                         animal.deplete(island);
+                        animal.reproduce(island);
                     }
                 });
             }
@@ -60,7 +61,7 @@ public class SimulationService {
                 Plant randomPlant = PlantsCreator.createRandomPlant();
                 final int finalI = i;
                 final int finalJ = j;
-                int plantsCount = island.getCountOfOrganismType(finalI, finalJ, randomPlant);
+                int plantsCount = island.getCountOfOrganismTypeOnCell(finalI, finalJ, randomPlant);
                 int maxCount = randomPlant.getMaxCount();
                 executorService.submit(() -> {
                     if (isGrowthProbabilityValid() && plantsCount < maxCount) {
