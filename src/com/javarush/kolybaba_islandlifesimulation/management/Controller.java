@@ -40,9 +40,9 @@ public class Controller {
     }
 
     private static void processSimulationOption(int promptOptional, Island island) {
-        if (promptOptional == 1) {
+        if (promptOptional == CLI.getOPTION_FIRST()) {
             runContinuousSimulation(island);
-        } else if (promptOptional == 2) {
+        } else if (promptOptional == CLI.getOPTION_SECOND()) {
             runLimitedSimulation(island);
         }
     }
