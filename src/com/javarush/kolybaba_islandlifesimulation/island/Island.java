@@ -6,6 +6,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Getter
@@ -79,16 +80,13 @@ public class Island {
     }
 
     public synchronized List<Animal> getAllAnimalsFromCell(int row, int column) {
-        List<Organism> organisms = new ArrayList<>(getAllOrganismsFromCell(row, column));
-        List<Animal> animals = new ArrayList<>();
-        for (Organism organism: organisms) {
-            if (organism instanceof Animal) {
-                animals.add((Animal) organism);
-            }
-        }
-        return animals;
-
+        List<Organism> organisms = getAllOrganismsFromCell(row, column);
+        return organisms.stream()
+                .filter(organism -> organism instanceof Animal)
+                .map(organism -> (Animal) organism)
+                .collect(Collectors.toList());
     }
+
 
     public synchronized List<Animal> getAllAnimalsFromIsland() {
         List<Animal> animals = new ArrayList<>();
