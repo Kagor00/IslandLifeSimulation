@@ -54,8 +54,8 @@ public class Controller {
         int daysCount = 0;
 
         while (island.isAnimalPopulationValid(island)) {
-            SIMULATION_SERVICE.animalLifeSimulation(island);
             SIMULATION_SERVICE.plantGrowth(island);
+            SIMULATION_SERVICE.animalLifeSimulation(island);
             daysCount++;
         }
 
