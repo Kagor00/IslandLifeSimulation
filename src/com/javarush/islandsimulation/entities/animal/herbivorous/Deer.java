@@ -7,11 +7,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @EqualsAndHashCode(callSuper = true)
 public class Deer extends Herbivorous {
-    private static final AtomicInteger idCounter = new AtomicInteger(0);
+    private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
 
     public Deer(Gender gender) {
-        super(idCounter.getAndIncrement(), 300.0, 20, 4, 50.0, gender);
+        super(ID_COUNTER.getAndIncrement(), 300.0, 20, 4, 50.0, gender);
     }
 
     /* Статичний метод для заповнення популяції,

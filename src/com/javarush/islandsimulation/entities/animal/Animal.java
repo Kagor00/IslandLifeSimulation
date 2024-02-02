@@ -20,7 +20,7 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
     private final Gender gender;
     private final double saturation;
     private final ProbabilityMatrix probabilityMatrix = new ProbabilityMatrix();
-    //перевірка тварини, яка розмножилась, щоб одна тварина розмножувалась за один хід лише один раз
+    //перевірка тварини, яка розмножилась, щоб одна пара тварин розмножувалась за один хід лише один раз
     @Setter
     private boolean hasReproduced = false;
 
