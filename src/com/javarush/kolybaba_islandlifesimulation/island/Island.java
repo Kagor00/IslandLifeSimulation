@@ -37,11 +37,11 @@ public class Island {
         getAllOrganismsFromCell(row, column).remove(organism);
     }
 
-    public List<Organism> getAllOrganismsFromCell(int row, int column) {
+    public synchronized List<Organism> getAllOrganismsFromCell(int row, int column) {
         return cells.get(row).get(column).organisms;
     }
 
-    public List<Organism> getAllOrganismsOnThisCell(Organism organism) {
+    public synchronized List<Organism> getAllOrganismsOnThisCell(Organism organism) {
         int[] position = getPositionOfOrganism(organism);
         int row = position[0];
         int column = position[1];
@@ -56,7 +56,7 @@ public class Island {
     }
 
 
-    public int getCountOfOrganismTypeOnCell(int row, int column, Organism organism) {
+    public synchronized int getCountOfOrganismTypeOnCell(int row, int column, Organism organism) {
         List<Organism> organisms = getAllOrganismsFromCell(row, column);
         int count = 0;
         for (Organism org : organisms) {
@@ -67,7 +67,7 @@ public class Island {
         return count;
     }
 
-    public int[] getPositionOfOrganism(Organism organism) {
+    public synchronized int[] getPositionOfOrganism(Organism organism) {
         for (int row = 0; row < cells.size(); row++) {
             for (int column = 0; column < cells.get(row).size(); column++) {
                 List<Organism> organisms = new ArrayList<>(getAllOrganismsFromCell(row, column));
@@ -79,14 +79,13 @@ public class Island {
         return new int[]{-1, -1};
     }
 
-    public List<Animal> getAllAnimalsFromCell(int row, int column) {
+    public synchronized List<Animal> getAllAnimalsFromCell(int row, int column) {
         List<Organism> organisms = getAllOrganismsFromCell(row, column);
         return organisms.stream()
                 .filter(organism -> organism instanceof Animal)
                 .map(organism -> (Animal) organism)
                 .collect(Collectors.toList());
     }
-
 
     public synchronized List<Animal> getAllAnimalsFromIsland() {
         List<Animal> animals = new ArrayList<>();

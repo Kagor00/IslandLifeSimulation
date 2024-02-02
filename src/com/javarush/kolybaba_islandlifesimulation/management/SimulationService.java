@@ -12,6 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 
+
 public class SimulationService {
 
     // 20% імовірність виростання рандомної рослини в кожній клітинці
@@ -78,6 +79,7 @@ public class SimulationService {
             e.printStackTrace();
         }
     }
+
 
     private boolean isGrowthProbabilityValid() {
         return ThreadLocalRandom.current().nextDouble() < PLANTS_GROWTH_PROBABILITY;

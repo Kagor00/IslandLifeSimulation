@@ -20,7 +20,7 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
     private final Gender gender;
     private final double saturation;
     private final ProbabilityMatrix probabilityMatrix = new ProbabilityMatrix();
-    //перевірка тварини, яка розмножилась, щоб одна пара тварин розмножувалась за один хід лише один раз
+    //перевірка тварини, яка розмножилась, щоб одна пара тварин розмножувалась лише один раз
     @Setter
     private boolean hasReproduced = false;
 
@@ -50,7 +50,7 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
         }
     }
 
-    public void findFood(Island island) {
+    public synchronized void findFood(Island island) {
         List<Organism> organisms = island.getAllOrganismsOnThisCell(this);
         int[] position = island.getPositionOfOrganism(this);
         double weightFood = 0;
@@ -77,7 +77,7 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
 
 
     @Override
-    public void reproduce(Island island) {
+    public synchronized void reproduce(Island island) {
         int[] position = island.getPositionOfOrganism(this);
         int row = position[0];
         int column = position[1];
