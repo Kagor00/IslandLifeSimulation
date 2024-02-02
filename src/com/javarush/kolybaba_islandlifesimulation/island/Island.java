@@ -37,11 +37,11 @@ public class Island {
         getAllOrganismsFromCell(row, column).remove(organism);
     }
 
-    public synchronized List<Organism> getAllOrganismsFromCell(int row, int column) {
+    public List<Organism> getAllOrganismsFromCell(int row, int column) {
         return cells.get(row).get(column).organisms;
     }
 
-    public synchronized List<Organism> getAllOrganismsOnThisCell(Organism organism) {
+    public List<Organism> getAllOrganismsOnThisCell(Organism organism) {
         int[] position = getPositionOfOrganism(organism);
         int row = position[0];
         int column = position[1];
@@ -56,7 +56,7 @@ public class Island {
     }
 
 
-    public synchronized int getCountOfOrganismTypeOnCell(int row, int column, Organism organism) {
+    public int getCountOfOrganismTypeOnCell(int row, int column, Organism organism) {
         List<Organism> organisms = getAllOrganismsFromCell(row, column);
         int count = 0;
         for (Organism org : organisms) {
@@ -67,7 +67,7 @@ public class Island {
         return count;
     }
 
-    public synchronized int[] getPositionOfOrganism(Organism organism) {
+    public int[] getPositionOfOrganism(Organism organism) {
         for (int row = 0; row < cells.size(); row++) {
             for (int column = 0; column < cells.get(row).size(); column++) {
                 List<Organism> organisms = new ArrayList<>(getAllOrganismsFromCell(row, column));
