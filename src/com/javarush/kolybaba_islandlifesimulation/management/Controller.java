@@ -54,10 +54,11 @@ public class Controller {
         int daysCount = 0;
 
         while (island.isAnimalPopulationValid(island)) {
-            Controller.SIMULATION_SERVICE.animalLifeSimulation(island);
-            Controller.SIMULATION_SERVICE.plantGrowth(island);
+            SIMULATION_SERVICE.animalLifeSimulation(island);
+            SIMULATION_SERVICE.plantGrowth(island);
             daysCount++;
         }
+
         System.out.println("____________________________________________________________________________________________________________________");
         System.out.println("Симуляцiю завершено. Кiлькiсть днiв життя популяцiї: " + daysCount);
         System.out.println("____________________________________________________________________________________________________________________");
@@ -68,17 +69,17 @@ public class Controller {
         int daysCount = CLI.promptForInt("Введiть кiлькiсть днiв симуляцiї життя на островi: ");
         System.out.println("Зачекайте поки завершиться симуляцiя. Це може зайняти деякий час...");
         for (int i = 0; i < daysCount; i++) {
-            Controller.SIMULATION_SERVICE.plantGrowth(island);
-            Controller.SIMULATION_SERVICE.animalLifeSimulation(island);
-
+            SIMULATION_SERVICE.plantGrowth(island);
+            SIMULATION_SERVICE.animalLifeSimulation(island);
         }
+
         System.out.println("____________________________________________________________________________________________________________________");
         System.out.println("Симуляцiю завершено. ");
         System.out.println("____________________________________________________________________________________________________________________");
         System.out.println();
         System.out.println("Статистика популяцiї тварин на островi, " + "день " + daysCount + ":");
         System.out.println();
-        Controller.POPULATION_SERVICE.getCountAnimalsOnIsland(island);
+        POPULATION_SERVICE.getCountAnimalsOnIsland(island);
         System.out.println("____________________________________________________________________________________________________________________");
     }
 }
