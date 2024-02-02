@@ -8,6 +8,7 @@ import com.javarush.islandsimulation.entities.activities.Reproducible;
 import com.javarush.islandsimulation.island.Island;
 import com.javarush.islandsimulation.probability.ProbabilityMatrix;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -20,6 +21,7 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
     private final double saturation;
     private final ProbabilityMatrix probabilityMatrix = new ProbabilityMatrix();
     //перевірка тварини, яка розмножилась, щоб одна тварина розмножувалась за один хід лише один раз
+    @Setter
     private boolean hasReproduced = false;
 
 
@@ -76,26 +78,21 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
 
     @Override
     public void reproduce(Island island) {
-        if (!hasReproduced) {
-            int[] position = island.getPositionOfOrganism(this);
-            int row = position[0];
-            int column = position[1];
-            Animal firstAnimal = this;
-            Animal newAnimal = null;
+        int[] position = island.getPositionOfOrganism(this);
+        int row = position[0];
+        int column = position[1];
+        Animal firstAnimal = this;
+        Animal newAnimal;
 
-            List<Animal> animals = island.getAllAnimalsFromCell(row, column);
-            for (Animal animal : animals) {
-                if (isValidReproduce(firstAnimal, animal)
-                        && isValidPlacing(island, position)) {
-                    newAnimal = (Animal) this.createNewOrganism();
-                    island.addOrganismToCell(row, column, newAnimal);
-                    break;
-                }
-            }
-            /* вказуємо, що дана тварина вже розмножилась,
-            щоб одна тварина за один хід не розмножувалась кілька разів */
-            if (newAnimal != null) {
-                hasReproduced = true;
+        List<Animal> animals = island.getAllAnimalsFromCell(row, column);
+        for (Animal secondAnimal : animals) {
+            if (isValidReproduce(firstAnimal, secondAnimal)
+                    && isValidPlacing(island, position)) {
+                newAnimal = (Animal) this.createNewOrganism();
+                island.addOrganismToCell(row, column, newAnimal);
+                firstAnimal.setHasReproduced(true);
+                secondAnimal.setHasReproduced(true);
+                break;
             }
         }
     }
@@ -168,8 +165,12 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
     //Перевіряємо можливість розмноження
     private boolean isValidReproduce(Animal firstAnimal, Animal secondAnimal) {
         return firstAnimal.getClass().equals(secondAnimal.getClass())
+                && !firstAnimal.isHasReproduced()
+                && !secondAnimal.isHasReproduced()
                 && ((firstAnimal.gender.equals(Gender.MALE)
-                && secondAnimal.gender.equals(Gender.FEMALE)));
+                && secondAnimal.gender.equals(Gender.FEMALE))
+                || firstAnimal.gender.equals(Gender.FEMALE)
+                && secondAnimal.gender.equals(Gender.MALE));
     }
 
     private void performMove(Island island, int[] currentPosition, int[] newPosition) {
