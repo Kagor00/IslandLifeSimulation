@@ -114,7 +114,7 @@ public class Island {
 
 
     public boolean isValidCell(int row, int column) {
-        return row >= 0 && row < getRows() && column >= 0 && column < getRows();
+        return row >= 0 && row < getRows() && column >= 0 && column < getColumns();
     }
 
 
