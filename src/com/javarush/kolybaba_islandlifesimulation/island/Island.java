@@ -79,7 +79,7 @@ public class Island {
         return new int[]{-1, -1};
     }
 
-    public synchronized List<Animal> getAllAnimalsFromCell(int row, int column) {
+    public List<Animal> getAllAnimalsFromCell(int row, int column) {
         List<Organism> organisms = getAllOrganismsFromCell(row, column);
         return organisms.stream()
                 .filter(organism -> organism instanceof Animal)
