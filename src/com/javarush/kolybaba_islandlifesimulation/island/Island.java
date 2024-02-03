@@ -41,13 +41,6 @@ public class Island {
         return cells.get(row).get(column).organisms;
     }
 
-    public synchronized List<Organism> getAllOrganismsOnThisCell(Organism organism) {
-        int[] position = getPositionOfOrganism(organism);
-        int row = position[0];
-        int column = position[1];
-        return getAllOrganismsFromCell(row, column);
-    }
-
    public synchronized boolean isAnimalPopulationValid(Island island) {
         int totalAnimalsCount;
         List<Animal> allAnimals = island.getAllAnimalsFromIsland();
