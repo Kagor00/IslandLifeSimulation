@@ -86,8 +86,7 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
 
         List<Animal> animals = island.getAllAnimalsFromCell(row, column);
         for (Animal secondAnimal : animals) {
-            if (isValidReproduce(firstAnimal, secondAnimal)
-                    && isValidPlacing(island, position)) {
+            if (isValidReproduce(firstAnimal, secondAnimal) && isValidPlacing(island, position)) {
                 newAnimal = (Animal) this.createNewOrganism();
                 island.addOrganismToCell(row, column, newAnimal);
                 firstAnimal.setHasReproduced(true);
@@ -153,9 +152,9 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
     }
 
     //Перевіряємо можливість розміщення (межі острова та ліміт даного виду в клітинці)
-    private boolean isValidPlacing(Island island, int[] newPosition) {
-        int row = newPosition[0];
-        int column = newPosition[1];
+    private boolean isValidPlacing(Island island, int[] position) {
+        int row = position[0];
+        int column = position[1];
         int maxCount = this.getMaxCount();
         return island.isValidCell(row, column)
                 && island.getCountOfOrganismTypeOnCell(row, column, this) < maxCount;
