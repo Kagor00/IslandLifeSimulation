@@ -52,16 +52,16 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
 
     public synchronized void findFood(Island island) {
         int[] position = island.getPositionOfOrganism(this);
-        List<Animal> animals = island.getAllAnimalsFromCell(position[0], position[1]);
+        List<Organism> organisms = island.getAllOrganismsFromCell(position[0], position[1]);
         double weightFood = 0;
         double probability;
         double random;
-        for (Animal animal : animals) {
-            probability = probabilityMatrix.getProbability(this.getClass(), animal.getClass());
+        for (Organism food : organisms) {
+            probability = probabilityMatrix.getProbability(this.getClass(), food.getClass());
             random = ThreadLocalRandom.current().nextDouble();
             if (random <= probability && probability > 0) {
-                weightFood = animal.getWeight();
-                island.removeOrganismFromCell(position[0], position[1], animal);
+                weightFood = food.getWeight();
+                island.removeOrganismFromCell(position[0], position[1], food);
                 break;
             }
         }
