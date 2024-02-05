@@ -43,7 +43,7 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
         while (attempt < DIRECTIONS_COUNT) {
             int[] newPosition = calculateNewPosition(position);
             if (isValidPlacing(island, newPosition)) {
-                performMove(island, position, newPosition);
+                performMove(island, position, newPosition, this);
                 return;
             }
             attempt++;
@@ -172,8 +172,8 @@ public abstract class Animal extends Organism implements Movable, Nutrition, Rep
                 && secondAnimal.gender.equals(Gender.MALE));
     }
 
-    private void performMove(Island island, int[] currentPosition, int[] newPosition) {
-        island.addOrganismToCell(newPosition[0], newPosition[1], this);
-        island.removeOrganismFromCell(currentPosition[0], currentPosition[1], this);
+    private void performMove(Island island, int[] currentPosition, int[] newPosition, Animal animal) {
+        island.addOrganismToCell(newPosition[0], newPosition[1], animal);
+        island.removeOrganismFromCell(currentPosition[0], currentPosition[1], animal);
     }
 }
