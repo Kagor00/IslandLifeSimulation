@@ -33,8 +33,8 @@ public class SimulationService {
                     for (Animal animal : animalsInCell) {
                         animal.move(island);
                         animal.findFood(island);
-                        animal.deplete(island);
                         animal.reproduce(island);
+                        animal.deplete(island);
                     }
                 });
             }
