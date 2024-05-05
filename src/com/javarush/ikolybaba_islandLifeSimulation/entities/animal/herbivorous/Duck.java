@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Duck extends Herbivorous {
     private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
-    public Duck(Gender gender) {
+    Duck(Gender gender) {
         super(ID_COUNTER.getAndIncrement(), 1.0, 200, 4, 0.15, gender);
     }
 

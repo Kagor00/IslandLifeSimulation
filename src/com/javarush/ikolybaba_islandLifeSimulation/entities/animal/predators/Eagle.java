@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Eagle extends Predator{
     private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
-    public Eagle(Gender gender) {
+    Eagle(Gender gender) {
         super(ID_COUNTER.getAndIncrement(), 6.0, 20, 3, 1.0, gender);
     }
 

@@ -11,7 +11,7 @@ public class Wolf extends Predator {
     private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
 
-    public Wolf(Gender gender) {
+    Wolf(Gender gender) {
         super(ID_COUNTER.getAndIncrement(), 50.0, 30, 3, 8.0, gender);
 
     }

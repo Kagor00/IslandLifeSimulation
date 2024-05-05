@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Horse extends Herbivorous{
     private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
-    public Horse(Gender gender) {
+    Horse(Gender gender) {
         super(ID_COUNTER.getAndIncrement(), 400.0, 20, 4, 60.0, gender);
     }
 

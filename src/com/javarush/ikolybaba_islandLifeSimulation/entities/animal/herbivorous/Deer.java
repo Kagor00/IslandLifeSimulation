@@ -10,7 +10,7 @@ public class Deer extends Herbivorous {
     private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
 
-    public Deer(Gender gender) {
+    Deer(Gender gender) {
         super(ID_COUNTER.getAndIncrement(), 300.0, 20, 4, 50.0, gender);
     }
 
