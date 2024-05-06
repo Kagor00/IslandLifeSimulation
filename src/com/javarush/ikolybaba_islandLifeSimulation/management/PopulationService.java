@@ -9,7 +9,7 @@ import com.javarush.ikolybaba_islandLifeSimulation.island.Island;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class PopulationService {
+class PopulationService {
 
     void wolvesCreator(int count, Island island) {
         for (int i = 0; i < count; i++) {

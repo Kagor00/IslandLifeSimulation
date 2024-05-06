@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Squirrel extends Herbivorous {
     private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
-    public Squirrel(Gender gender) {
+    Squirrel(Gender gender) {
         super(ID_COUNTER.getAndIncrement(), 2, 100, 3, 0.50, gender);
     }
 

@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class CLI {
+class CLI {
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 100;

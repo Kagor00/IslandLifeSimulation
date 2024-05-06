@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Mouse extends Herbivorous {
     private static final AtomicInteger ID_COUNTER = new AtomicInteger(0);
 
-    public Mouse(Gender gender) {
+    Mouse(Gender gender) {
         super(ID_COUNTER.getAndIncrement(), 0.05, 500, 1, 0.01, gender);
     }
 

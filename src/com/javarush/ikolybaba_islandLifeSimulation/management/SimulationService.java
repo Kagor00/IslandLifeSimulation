@@ -11,9 +11,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
-
-
-public class SimulationService {
+class SimulationService {
 
     // 20% імовірність виростання рандомної рослини в кожній клітинці
     private static final double PLANTS_GROWTH_PROBABILITY = 0.20;
